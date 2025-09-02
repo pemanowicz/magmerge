@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "magmerge"
+version = "0.1.0"
+description = "Parsers and merging of outputs (DAS Tool, samtools coverage, GTDB-Tk) + CLI"
+authors = ["Paulina Emanowicz <emanowiczpaulina@gmail.com>"]
+readme = "README.md"
+packages = [{ include = "magmerge", from = "src" }]
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.13"
+pandas = "^2.2"
+loguru = "^0.7"
+tqdm = "^4.66"
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2"
+pytest-cov = "^5.0"
+black = "^24.8"
+
+
+[tool.black]
+line-length = 100
