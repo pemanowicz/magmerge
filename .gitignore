@@ -3,3 +3,4 @@ data/
 output/
 python_paths.csv
 sra_ids.txt
+**/__pycache__/
