@@ -1,6 +1,6 @@
 # magmerge
 
-Parsers and merging of outputs (DAS Tool, samtools coverage, GTDB-Tk) + CLI
+Parsers and merging of outputs (DAS Tool, samtools coverage, GTDB-Tk) with `Python` & fetch sra with `Bash`
 
 ## Installation
 
