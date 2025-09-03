@@ -4,6 +4,7 @@ from loguru import logger
 
 from src.magmerge.load_paths import load_stage_files
 
+
 # PIPELINE: BINNING
 def pipeline_Binning(paths_csv: str, print_paths: bool = True) -> pd.DataFrame:
     def build_paths(row):
@@ -11,13 +12,15 @@ def pipeline_Binning(paths_csv: str, print_paths: bool = True) -> pd.DataFrame:
         sample_id = row["sample_id"]
         return [
             folder / f"{sample_id}_DASTool_contig2bin.tsv",
-            folder / f"{sample_id}_DASTool_summary.tsv"
+            folder / f"{sample_id}_DASTool_summary.tsv",
         ]
 
     def reader(path: Path) -> pd.DataFrame:
         if path.name.endswith("contig2bin.tsv"):
             return pd.read_csv(
-                path, sep="\t", header=None,
+                path,
+                sep="\t",
+                header=None,
                 names=["contig", "bin"],
                 dtype={"contig": "string", "bin": "string"},
             )
@@ -27,7 +30,11 @@ def pipeline_Binning(paths_csv: str, print_paths: bool = True) -> pd.DataFrame:
             return pd.DataFrame()
 
     # special contig2bin join with summary → outer join after bin
-    df_paths = pd.read_csv(paths_csv, sep=",", dtype=str,)
+    df_paths = pd.read_csv(
+        paths_csv,
+        sep=",",
+        dtype=str,
+    )
     bin_rows = df_paths[df_paths["stage"] == "BINNING"].copy()
     frames: list[pd.DataFrame] = []
 
@@ -35,15 +42,16 @@ def pipeline_Binning(paths_csv: str, print_paths: bool = True) -> pd.DataFrame:
         folder = Path(row["folder"])
         sample_id = row["sample_id"]
         contig2bin_path = folder / f"{sample_id}_DASTool_contig2bin.tsv"
-        summary_path   = folder / f"{sample_id}_DASTool_summary.tsv"
+        summary_path = folder / f"{sample_id}_DASTool_summary.tsv"
 
         if print_paths:
             logger.info(contig2bin_path)
             logger.info(summary_path)
 
         try:
-            c2b = pd.read_csv(contig2bin_path, sep="\t", header=None,
-                              names=["contig", "bin"], dtype="string")
+            c2b = pd.read_csv(
+                contig2bin_path, sep="\t", header=None, names=["contig", "bin"], dtype="string"
+            )
         except FileNotFoundError:
             logger.warning(f"File not found: {contig2bin_path}")
             c2b = pd.DataFrame(columns=["contig", "bin"])
