@@ -26,7 +26,7 @@ def make_inputs_with_sampleid():
         }
     )
 
-    # df_gtdb: taxonomy + ref, pełna klasyfikacja dla obu
+
     df_gtdb = pd.DataFrame(
         {
             "user_genome": ["bin1", "bin2"],
@@ -61,7 +61,6 @@ def test_without_bin_score_column():
     df_bin = df_bin.drop(columns=["bin_score"])  # remove bin_score
 
     out = prepare_mag_table(df_gtdb, df_cov, df_bin)
-    # Kolumna istnieje, ale wszystkie wiersze odrzucone przez dropna()
     assert "bin_score" in out.columns
     assert out.empty
 
