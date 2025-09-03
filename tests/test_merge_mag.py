@@ -26,7 +26,6 @@ def make_inputs_with_sampleid():
         }
     )
 
-
     df_gtdb = pd.DataFrame(
         {
             "user_genome": ["bin1", "bin2"],
@@ -63,6 +62,7 @@ def test_without_bin_score_column():
     out = prepare_mag_table(df_gtdb, df_cov, df_bin)
     assert "bin_score" in out.columns
     assert out.empty
+
 
 def test_without_sampleid_column():
     df_gtdb, df_cov, df_bin = make_inputs_with_sampleid()

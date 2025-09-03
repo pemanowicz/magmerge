@@ -3,6 +3,7 @@ from pathlib import Path
 from loguru import logger
 from magmerge.load_paths import load_stage_files
 
+
 def write_paths_csv(tmp_path: Path, rows: list[dict]) -> Path:
     df = pd.DataFrame(rows)
     p = tmp_path / "python_paths.csv"
@@ -26,9 +27,7 @@ def test_concatenates_frames_and_prints_paths(tmp_path, capsys):
 
     # reader returns a tiny DF per file
     def reader_fn(p: Path):
-        return pd.DataFrame(
-            {"sample_id": [p.stem.split("_")[0]], "path": [str(p)]}
-        )
+        return pd.DataFrame({"sample_id": [p.stem.split("_")[0]], "path": [str(p)]})
 
     out = load_stage_files(
         paths_csv=str(paths_csv),

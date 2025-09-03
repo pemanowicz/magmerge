@@ -3,8 +3,10 @@ from magmerge.taxonomy import split_taxonomy
 
 
 def test_full_classification():
-    classif = "d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;" \
-              "f__Lactobacillaceae;g__Lactobacillus;s__Lactobacillus_acidophilus"
+    classif = (
+        "d__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;"
+        "f__Lactobacillaceae;g__Lactobacillus;s__Lactobacillus_acidophilus"
+    )
     result = split_taxonomy(classif)
     assert result["Domain"] == "Bacteria"
     assert result["Phylum"] == "Firmicutes"

@@ -21,7 +21,8 @@ def test_pipeline_binning_merges_contig2bin_and_summary(tmp_path):
     (folder / "S1_DASTool_summary.tsv").write_text("bin\tscore\nbin1\t100\nbin2\t200\n")
 
     paths_csv = write_paths_csv(
-        tmp_path, [{"study_id": "st1", "sample_id": "S1", "stage": "BINNING", "folder": str(folder)}]
+        tmp_path,
+        [{"study_id": "st1", "sample_id": "S1", "stage": "BINNING", "folder": str(folder)}],
     )
 
     df = pl.pipeline_Binning(str(paths_csv), print_paths=False)
@@ -61,7 +62,6 @@ def test_pipeline_binning_missing_files_logs_warning(tmp_path):
     assert "File not found" in all_msgs
 
 
-
 def test_pipeline_binning_empty_when_no_rows(tmp_path):
     paths_csv = write_paths_csv(
         tmp_path, [{"study_id": "st3", "sample_id": "S3", "stage": "COVERAGE", "folder": "x"}]
@@ -75,7 +75,8 @@ def test_pipeline_coverage_reads_and_strips_hash(tmp_path):
     folder.mkdir()
     (folder / "S4_coverage.tsv").write_text("#rname\treads\ncontigA\t10\n")
     paths_csv = write_paths_csv(
-        tmp_path, [{"study_id": "st4", "sample_id": "S4", "stage": "COVERAGE", "folder": str(folder)}]
+        tmp_path,
+        [{"study_id": "st4", "sample_id": "S4", "stage": "COVERAGE", "folder": str(folder)}],
     )
 
     df = pl.pipeline_COVERAGE(str(paths_csv), print_paths=False)
@@ -90,7 +91,9 @@ def test_pipeline_coverage_reads_and_strips_hash(tmp_path):
 def test_pipeline_gtdbtk_reads_summary(tmp_path):
     folder = tmp_path / "s5"
     folder.mkdir()
-    (folder / "gtdbtk.bac120.summary.tsv").write_text("user_genome\ttaxonomy\nMAG1\td__Bacteria;p__Firmicutes\n")
+    (folder / "gtdbtk.bac120.summary.tsv").write_text(
+        "user_genome\ttaxonomy\nMAG1\td__Bacteria;p__Firmicutes\n"
+    )
     paths_csv = write_paths_csv(
         tmp_path, [{"study_id": "st5", "sample_id": "S5", "stage": "GTDBTK", "folder": str(folder)}]
     )
