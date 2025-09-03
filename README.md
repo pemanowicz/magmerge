@@ -51,9 +51,7 @@ The `[dev]` extra installs development dependencies (pytest, black, etc.).
 ---
 
 ### 4. Run tests
-```bash
-pytest
-```
+You can run pytest & black & test bash script inside a notebook (`nb_dev.ipynb`)
 
 **Python (magmerge):**
 - Parses outputs from **DAS Tool**, **samtools coverage**, and **GTDB-Tk**.
@@ -69,4 +67,4 @@ pytest
 
 ## Quick usage
 
-You can run the pipeline directly inside a notebook (`nb.ipynb`)
+You can run the pipelines directly inside a notebook (`nb.ipynb`).
