@@ -6,7 +6,7 @@ Parsers and merging of outputs (DAS Tool, samtools coverage, GTDB-Tk) with `Pyth
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/ # TO DO !!!
+git clone https://github.com/pemanowicz/magmerge.git
 cd magmerge
 ```
 

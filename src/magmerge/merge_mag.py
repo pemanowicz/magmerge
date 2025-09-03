@@ -40,7 +40,6 @@ def prepare_mag_table(
         .sum()
         .rename(columns={"bin": "mag_id", "endpos": "genome_size"})
     )
-
     # 3) relative abundance: share of readings per bin
     if "sample_id" in cov_bin.columns:
         reads_per = (
@@ -84,7 +83,11 @@ def prepare_mag_table(
         ["user_genome", "classification", "closest_genome_reference", "closest_genome_ani"]
     ].copy()
 
+    print(gtdb["classification"])
+
     tax = gtdb["classification"].apply(split_taxonomy).apply(pd.Series)
+    print(tax)
+
     gtdb_clean = pd.concat([gtdb.drop(columns=["classification"]), tax], axis=1)
     gtdb_clean = gtdb_clean.rename(
         columns={

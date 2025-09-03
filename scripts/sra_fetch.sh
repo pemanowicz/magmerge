@@ -57,7 +57,7 @@ while IFS= read -r acc || [[ -n "$acc" ]]; do
   fi
 
   # 2) Convert to FASTQ; write outputs to tmpdir AND force temp files into tmpdir
-  if ! fasterq-dump --split-files --threads 4 --outdir "$tmpdir" --temp "$tmpdir" "$acc"; then
+  if ! fasterq-dump --split-files --threads 8 --outdir "$tmpdir" --temp "$tmpdir" "$acc"; then
     echo "  !! fasterq-dump failed for $acc"
     FAIL_IDS+=("$acc"); rm -rf "$tmpdir"; continue
   fi
