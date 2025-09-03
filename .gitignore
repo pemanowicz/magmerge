@@ -1,2 +1,5 @@
 data/
 .venv/
+output/
+python_paths.csv
+sra_ids.txt
