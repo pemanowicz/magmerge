@@ -4,3 +4,5 @@ output/
 python_paths.csv
 sra_ids.txt
 **/__pycache__/
+output_test/
+.coverage
