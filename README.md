@@ -48,11 +48,7 @@ pip install -e .[dev]
 The `-e .` flag installs the project in editable mode.  
 The `[dev]` extra installs development dependencies (pytest, black, etc.).
 
----
-
-### 4. Run tests
-You can run pytest & black & test bash script inside a notebook (`nb_dev.ipynb`)
-
+## Project overview
 **Python (magmerge):**
 - Parses outputs from **DAS Tool**, **samtools coverage**, and **GTDB-Tk**.
 - Skips incomplete samples (with a clear log message).
@@ -68,3 +64,6 @@ You can run pytest & black & test bash script inside a notebook (`nb_dev.ipynb`)
 ## Quick usage
 
 You can run the pipelines directly inside a notebook (`nb.ipynb`).
+
+## Run tests
+You can run pytest & black & test bash script inside a notebook (`nb_dev.ipynb`)
